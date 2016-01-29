@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <welcome-file-list>
+        <welcome-file>index</welcome-file>
+    </welcome-file-list>
+    
+    <security-constraint>
+        <!-- 保護対象のURL -->
+        <web-resource-collection>
+            <web-resource-name>Sample System</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <!-- HTTPS化 -->
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <!-- Payaraに設定したレルム名 -->
+        <realm-name>jerseyMvc</realm-name>
+    </login-config>
+    
+    <!-- ロールの一覧 -->
+    <security-role>
+        <description/>
+        <role-name>ADMINISTRATOR</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>MANAGER</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>OPERATOR</role-name>
+    </security-role>
+</web-app>
